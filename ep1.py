@@ -101,10 +101,17 @@ Created on Tue Apr 16 16:32:14 2019
 print("Bem vindo ao Choices Game")
 print("Digite o nome do seu jogador:")
 player = input("Nome:")
-print("Bem vindo {0}".format(player))
-
-
-
+print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
+print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
+print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
+print("Bem vindo {0} ao Choices Game!".format(player))
+print("")
+print("Descrição do jogo:")
+print("Você é um aluno do Insper que teve uma crise de insonia e dormiu alguns dias seguidos perdendo aulas e chegando no dia da entrega do EP.")
+print("")
+print("Você então vai tentar pedir para o professor adiar a entrega, mas para isso primeiro vai ter que achar ele. ")
+print("")
+print("Então boa sorte na sua jornada {0}!".format(player))
 
 
 
