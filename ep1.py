@@ -90,6 +90,29 @@ if __name__ == "__main__":
 
 ###Vou começar nosso codigo aqui thiago mano
 
+"""
+NKO Enterprises Presents: Choices game
+
+Created on Tue Apr 16 16:32:14 2019
+
+@author: Maulem and ThiagoD
+"""
+
+print("Bem vindo ao Choices Game")
+print("Digite o nome do seu jogador:")
+player = input("Nome:")
+print("Bem vindo {0}".format(player))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
