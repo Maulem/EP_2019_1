@@ -1,9 +1,11 @@
 # EP 2019-1: Escape Insper
 #
 # Alunos: 
-# - aluno A: Fulano da Silva, fulanos@insper.edu.br
-# - aluno B: Sicrano de Almeida, sicranoa1@insper.edu.br
+# - aluno A: Henrique Mualem Marti, henriquemm3@al.insper.edu.br
+# - aluno B: Thiago Lopes, thiagod@al.insper.edu.br
 
+###Exemplo do professor(acho que nao eh obrigatorio seguir):
+"""
 def carregar_cenarios():
     cenarios = {
         "inicio": {
@@ -84,3 +86,51 @@ def main():
 # Programa principal.
 if __name__ == "__main__":
     main()
+"""
+
+###Vou começar nosso codigo aqui thiago mano
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
