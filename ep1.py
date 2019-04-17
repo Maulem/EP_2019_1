@@ -98,11 +98,14 @@ Created on Tue Apr 16 16:32:14 2019
 @author: Maulem and ThiagoD
 """
 
+
+
+###Introdução ao game:
+
 print("Bem vindo ao Choices Game")
 print("Digite o nome do seu jogador:")
 player = input("Nome:")
 print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
-print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("Bem vindo {0} ao Choices Game!".format(player))
 print("")
@@ -113,7 +116,7 @@ print("Você então vai tentar pedir para o professor adiar a entrega, mas para 
 print("")
 print("Então boa sorte na sua jornada {0}!".format(player))
 
-
+###Funções de salas
 
 
 
