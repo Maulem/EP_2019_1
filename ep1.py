@@ -128,29 +128,43 @@ print("Então boa sorte na sua jornada {0}!".format(player))
 def carregar_cenarios():
     cenarios = {
         "inicio": {
-            "titulo": "Saguao do perigo",
-            "descricao": "Voce esta no saguao de entrada do insper",
+            "titulo": "Rua",
+            "descricao": "Voce esta na frente dos dois predios do Insper."
+                         "Para qual predio voce quer ir?",
             "opcoes": {
-                "andar professor": "Tomar o elevador para o andar do professor",
-                "biblioteca": "Ir para a biblioteca"
+                "predio 1": "Entrar no predio 1",
+                "predio 2": "Entrar no predio 2"
             }
         },
-        "andar professor": {
-            "titulo": "Andar do desespero",
-            "descricao": "Voce chegou ao andar da sala do seu professor",
-            "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                "professor": "Falar com o professor"
+        "predio 1": {
+                "titulo:": "Saguao de entrada do predio antigo(predio 1)",
+                "descricao": "Voce esta no saguao de entrada do predio 1",
+                "opcoes": {
+                        "inicio": "Voltar pra rua",
+                        "biblioteca": "Ir para a biblioteca buscar pistas",
+                        "elevador": "Ir pro elevador para procurar o professor"
             }
-        },
-        "professor": {
-            "titulo": "O monstro do Python",
-            "descricao": "Voce foi pedir para o professor adiar o EP. "
-                         "O professor revelou que é um monstro disfarçado "
-                         "e devorou sua alma.",
-            "opcoes": {}
-        },
+        },     
         "biblioteca": {
+            "titulo": "A casa dos livros",
+            "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
+            "opcoes": {
+                "Sala misteriosa": "Ir investigar o cheiro misterioso",
+                "predio 1": "Voltar para o saguao de entrada do predio 1"
+            }
+        },
+        "sala misteriosa": {
+            "titulo": "O cachorro quente magico",
+            "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa. "
+                         "Voce pode come-lo para ganhar alguma habilidade especial... "
+                         "ou talvez deixa-lo la ja que ele nao é seu...",
+            "opcoes": {
+                    "opcoes": {
+                "comer": "Encher sua barriga com esse delicioso cachorro quente",
+                "biblioteca": "Voltar para a Biblioteca"
+            }
+        },
+        "elevador": {
             "titulo": "Caverna da tranquilidade",
             "descricao": "Voce esta na biblioteca",
             "opcoes": {
