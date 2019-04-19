@@ -7,9 +7,7 @@
 
 """
 NKO Enterprises Presents: Escape Insper
-
 Created on Tue Apr 16 16:32:14 2019
-
 @author: Maulem and ThiagoD
 """
 ###Imports:
@@ -169,6 +167,7 @@ def carregar_cenarios():
     
 
 cenarios, cenario_atual = carregar_cenarios()
+
 
 
 aspas = '"'
