@@ -185,10 +185,39 @@ def main():
 
     cenarios, nome_cenario_atual = carregar_cenarios()
 
-    game_over = False
-    while not game_over:
-        cenario_atual = cenarios[nome_cenario_atual]
+###Jogo central:
 
+
+while not game_over:
+    cenario_atual = cenarios[cenario_atual]
+    
+    sala_key = cenario_atual["key"]
+    
+    if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
+        sorte = random.randint(1, 1000)
+        if sorte < 801:
+            print("Parabens")
+            cenario_atual = "biblioteca"
+            del cenarios["biblioteca"]["descricao"]
+            cenarios["biblioteca"]["descricao"] = "Uma biblioteca agora vazia e monotona!"
+            del cenarios["biblioteca"]["opcoes"]
+            cenarios["biblioteca"]["opcoes"] = {"predio 1": "voltar para o saguao de entrada do predio 1"}
+            comeu = True
+            game_over = False
+            
+        else:
+            print("Inspetora: É proibido comer na biblioteca!")
+            print("Inspetora: Vá agora para o Multiinsper!")
+            print("Você fica preso lá por 4 horas o que te faz não encontrar o professor!")
+            time.sleep(1)
+            game_over = True
+        
+
+    elif len(sala_key) == 0 and comeu == True:
+        print("Você ja passou por aqui!")
+        cenario_atual = "biblioteca"
+
+    else:
         print("")
         print(cenario_atual["titulo"])
         print("-" * len(cenario_atual["titulo"]))
@@ -198,21 +227,19 @@ def main():
         for chave in cenario_atual["opcoes"]:
             print("Digite: {0}{1}{2} para {3}".format(aspas, chave, aspas, cenario_atual["opcoes"][chave]))
 
-        opcoes = cenario_atual['opcoes']
+        opcoes = cenario_atual["opcoes"] 
         if len(opcoes) == 0:
-            print("Acabaram-se suas opções! Mwo mwo mwooooo...")
+            print("Acabaram-se suas opções {0}! Mwo mwo mwooooo...".format(player))
             game_over = True
         else:
             escolha = input("-")
-            if escolha in opcoes:
-                nome_cenario_atual = escolha
-            else:
-                print("Sua indecisão foi sua ruína!")
-                game_over = True
+        
+        if escolha in opcoes:
+            cenario_atual = escolha
+        else:
+            print("Sinto muito {0}!".format(player))
+            print("Sua indecisão foi sua ruína!")
+            game_over = True
+            
 
-    print("Você morreu!")
-
-
-# Programa principal.
-if __name__ == "__main__":
-    main()
+print(death(True))
