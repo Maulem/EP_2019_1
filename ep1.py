@@ -16,6 +16,17 @@ Created on Tue Apr 16 16:32:14 2019
 
 
 import time
+import random
+
+
+
+###Variaveis iniciais:
+
+
+player = "*****"
+game_over = False
+comeu = False
+aspas = '"'
 
 
 ###Animação de entrada:
@@ -29,8 +40,8 @@ import time
 ###Animacão da morte:
 
 
-def death(game_over):
-    if game_over == True:
+def death(game_over):###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
+    if game_over == True:###funcionar só usando return.
         time.sleep(1)
         print()
         print('                  uuuuuuu')
@@ -87,17 +98,17 @@ def death(game_over):
         print()
         time.sleep(1)
         
-        return "Game over!"
+        return "                  Game over!"
 
 
 ###Introdução ao game:
 
 """
 
-print("Bem vindo ao Choices Game")
+print("Bem vindo ao Escape Insper")
 print("Digite o nome do seu jogador:")
 player = input("Nome:")
-print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
+#print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("Bem vindo {0} ao Choices Game!".format(player))
 print("")
@@ -116,46 +127,53 @@ print("Então boa sorte na sua jornada {0}!".format(player))
 def carregar_cenarios():
     cenarios = {
         "inicio": {
-            "titulo": "Rua",
-            "descricao": "Voce esta na frente dos dois predios do Insper."
+            "titulo": "Rua da perdição",
+            "descricao": "Voce esta na frente dos dois predios do Insper.                                       "
                          "Para qual predio voce quer ir?",
             "opcoes": {
-                "predio 1": "Entrar no predio 1",
-                "predio 2": "Entrar no predio 2"
+                "predio 1": "entrar no predio 1",
+                "predio 2": "entrar no predio 2"
             }
         },
         "predio 1": {
-                "titulo": "Saguao de entrada do predio antigo(predio 1)",
+                "titulo": "Predio velhão",
                 "descricao": "Voce esta no saguao de entrada do predio 1",
                 "opcoes": {
-                        "inicio": "Voltar pra rua",
-                        "biblioteca": "Ir para a biblioteca buscar pistas",
-                        "elevador": "Ir pro elevador para procurar o professor"
+                        "inicio": "voltar pra rua",
+                        "biblioteca": "ir para a biblioteca buscar pistas",
+                        "elevador": "ir pro elevador para procurar o professor"
             }
         },     
         "biblioteca": {
             "titulo": "A casa dos livros",
             "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
             "opcoes": {
-                "Sala misteriosa": "Ir investigar o cheiro misterioso",
-                "predio 1": "Voltar para o saguao de entrada do predio 1"
+                "sala misteriosa": "ir investigar o cheiro misterioso",
+                "predio 1": "voltar para o saguao de entrada do predio 1"
             }
         },
         "sala misteriosa": {
             "titulo": "O cachorro quente magico",
-            "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa. "
-                         "Voce pode come-lo para ganhar alguma habilidade especial... "
-                         "ou talvez deixa-lo la ja que ele nao é seu...",
+            "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa.                                        "
+                         "Voce pode come-lo para ganhar alguma habilidade especial...                                        "
+                         "ou talvez deixa-lo la ja que ele nao é seu...                                       ",
             "opcoes": {
-                "comer": "Encher sua barriga com esse delicioso cachorro quente",
-                "biblioteca": "Voltar para a Biblioteca"
+                "comer": "encher a pança com esse delicioso cachorro quente",
+                "biblioteca": "voltar para a Biblioteca"
+              }
+        },
+        "comer": {#O que acontecera a seguir depende do randint por isso nao botei descricoes nem opcoes.
+            "titulo": "Sorte ou Azar?",
+            "descricao": "",
+            "opcoes": {
+                "biblioteca": "voltar para a Biblioteca"
               }
         },
         "elevador": {
-            "titulo": "Caverna da tranquilidade",
-            "descricao": "Voce esta na biblioteca",
+            "titulo": "Caixote de metal",
+            "descricao": "Voce esta no elevador",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
+                "inicio": "voltar para o saguao de entrada"
             }
         }
     }
@@ -166,37 +184,56 @@ def carregar_cenarios():
 cenarios, cenario_atual = carregar_cenarios()
 
 
-###Jogo central
+###Jogo central:
 
-game_over = False
+
 while not game_over:
     cenario_atual = cenarios[cenario_atual]
-    
-    print("Voce esta no(a) {0}".format(cenario_atual["titulo"]))
-    print(cenario_atual["descricao"])
-    print("Suas opcoes são: {0}".format(cenario_atual["opcoes"]))     
-    
-
-    opcoes = cenario_atual["opcoes"] 
-    if len(opcoes) == 0:
-        print("Acabaram-se suas opções! Mwo mwo mwooooo...")
-        game_over = True
-    else:
-
-    # Aluno B: substitua este comentário e a linha abaixo pelo código
-    # para pedir a escolha do usuário.
-        escolha = input("-")
-
-    if escolha in opcoes:
-        cenario_atual = escolha
-    else:
-        while escolha not in opcoes:
-            print("Escolha invalida!")
-            escolha = input("-")
+    if cenario_atual == cenarios["comer"] and comeu == False:###Primeira feature(Sorte ou Azar?)
+        sorte = random.randint(1, 1000)
+        if sorte < 801:
+            print("Parabens")
+            cenario_atual = cenarios["biblioteca"]
             
+        else:
+            print("Inspetora: É proibido comer na biblioteca!")
+            print("Inspetora: Vá agora para o Multiinsper!")
+            print("Você fica preso lá por 4 horas o que te faz não encontrar o professor!")
+            time.sleep(1)
+            game_over = True
+        
+        
+        
+    elif cenario_atual == cenarios["comer"] and comeu == True:
+        print("Você ja passou por aqui!")
+        cenario_atual = cenarios["biblioteca"]
+    else:
+        print("")
+        print(cenario_atual["titulo"])
+        print("-" * len(cenario_atual["titulo"]))
+        print(cenario_atual["descricao"])
+        print("")
+        print("Suas opcoes são:")
+        for chave in cenario_atual["opcoes"]:
+            print("Digite: {0}{1}{2} para {3}".format(aspas, chave, aspas, cenario_atual["opcoes"][chave]))
 
+        opcoes = cenario_atual["opcoes"] 
+        if len(opcoes) == 0:
+            print("Acabaram-se suas opções {0}! Mwo mwo mwooooo...".format(player))
+            game_over = True
+        else:
+            escolha = input("-")
+        
+        if escolha in opcoes:
+            cenario_atual = escolha
+        else:
+            print("Sinto muito {0}!".format(player))
+            print("Sua indecisão foi sua ruína!")
+            game_over = True
+            
+"""
 print(death(True))
-    
+"""
 
 
 
