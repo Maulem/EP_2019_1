@@ -127,7 +127,7 @@ print("Então boa sorte na sua jornada {0}!".format(player))
 
 
 """
-###Sistema de inventarios dos medalhoes:
+###Sistema de inventarios dos medalhoes(feature 3):
 
 def medalhoes(fogo, agua, neve):
     if fogo == True and agua == True and neve == True:
@@ -188,16 +188,70 @@ def carregar_cenarios():
                 "biblioteca": "voltar para a Biblioteca"
               }
         },
+        "5 andar": {
+            "titulo": "O andar da comida cara",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
+                         "Voce avista alguem de costas que parece ser o seu professor...                                        "
+                         "Mas não dá pra você enxergar direito, talvez se vc chegar mais perto...                                       ",
+            "opcoes": {
+                "prof": "ir falar o professor",
+                "elevador": "voltar para o elevador"
+              }
+        },
+        "prof": {
+            "titulo": "O comilão",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "descricao": "Voce se aproxima do professor rapidamente.                                                 "
+                         "Voce escorrega em um cubo de gelo e sai deslizando pelo chão...                                        "
+                         "Ao se aproximar do professor voce oercebe que na verdade é só mais um gordinho almoçando!"
+                         "Voce entao cai no prato de comida do comilão e ele literalmente te come!                                       ",
+            "opcoes": {}
+        },
+        "cobertura": {
+            "titulo": "A vista dos ceus",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "descricao": "Voce observa uma linda vista daqui de cima...                                        "
+                         "Da uma vontadezinha de pular...                                        "
+                         "Mas não, isso seria loucura...                                       ",
+            "opcoes": {
+                "pular": "se jogar de cabeça pelo precipicio",
+                "elevador": "voltar para o elevador"
+              }
+        },
+        "pular": {
+            "titulo": "O voo setentrional",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "descricao": "Um jato de vento subitamente rasga voçê por dentro.                                        "
+                         "O que era para durar segundos dura uma eternidade...                                        "
+                         "Você percebe um portal se formando...                                       ",
+            "opcoes": {
+                "morrer": "morrer estatelado no chão",
+                "portal": "se encolher e atravessar o portal"
+              }
+        },
+        "portal": {
+            "titulo": "Voo interdimensional",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "descricao": {},###descricao vazia para ativar o portal
+            "opcoes": {
+                "prof": "ir falar o professor",
+                "elevador": "voltar para o elevador"
+              }
+        },
         "elevador": {
             "titulo": "Caixote de metal",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "descricao": "Voce esta no elevador",
             "opcoes": {
-                "inicio": "voltar para o saguao de entrada"
+                "inicio": "voltar para o saguao de entrada",
+                "5 andar": "ir para o andar da comida",
+                "cobertura": "observar a vista"
+                
             }
         }
     }
-    nome_cenario_atual = "sala misteriosa"
+    nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual 
     
 
@@ -209,11 +263,12 @@ cenarios, cenario_atual = carregar_cenarios()
 
 while not game_over:
     
-    medalhao_3_elementos = medalhoes(medalhao_fogo, medalhao_agua, medalhao_neve)
+    medalhao_3_elementos = medalhoes(medalhao_fogo, medalhao_agua, medalhao_neve)#checa se vc conseguiu os 3 medalhoes
     
     cenario_atual = cenarios[cenario_atual]
     
-    sala_key = cenario_atual["key"]
+    sala_key = cenario_atual["key"]#parte da feature de sorte e azar
+    descricao = cenario_atual["descricao"]#parte da feature do portal
     
     if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
         sorte = random.randint(1, 1000)
@@ -241,22 +296,40 @@ while not game_over:
         
 
     elif len(sala_key) == 0 and comeu == True:
-        print("Você ja passou por aqui!")
+        print("Olha só temos um espertinho por aqui!")#a unica maneira de se chegar aqui é com o portal!
+        print("Parabens {0}, vc ganhou o medalhao dos 3 elementos completo!".format(player))
+        print("Sugestão: pule novamente {0}!".format(player))
+        time.sleep(3)
         cenario_atual = "biblioteca"
-
+        medalhao_3_elementos = True
+        
+    elif len(descricao) == 0:
+        
+        if medalhao_3_elementos == True:
+            cenario_atual = "easter egg"
+        else:
+            print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
+            print("Pra onde você quer ir?")
+            destino = input("-")
+            while destino not in cenarios:
+                print("Destino invalido")
+                destino = input("-")
+            cenario_atual = destino
+            
     else:
         print("")
-        print(cenario_atual["titulo"])
+        print("{0}.".format(cenario_atual["titulo"]))
         print("-" * len(cenario_atual["titulo"]))
         print(cenario_atual["descricao"])
         print("")
         print("Suas opcoes são:")
         for chave in cenario_atual["opcoes"]:
-            print("Digite: {0}{1}{2} para {3}".format(aspas, chave, aspas, cenario_atual["opcoes"][chave]))
+            print("Digite: {0}{1}{2} para {3}.".format(aspas, chave, aspas, cenario_atual["opcoes"][chave]))
 
         opcoes = cenario_atual["opcoes"] 
         if len(opcoes) == 0:
-            print("Acabaram-se suas opções {0}! Mwo mwo mwooooo...".format(player))
+            print("Acabaram-se suas opções {0}!".format(player))
+            time.sleep(5)
             game_over = True
         else:
             escolha = input("-")
@@ -264,8 +337,7 @@ while not game_over:
         if escolha in opcoes:
             cenario_atual = escolha
         else:
-            print("Sinto muito {0}!".format(player))
-            print("Sua indecisão foi sua ruína!")
+            print("Que pena {0}! Você morreu!".format(player))
             game_over = True
             
 
