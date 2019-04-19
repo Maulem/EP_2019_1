@@ -4,7 +4,7 @@
 # - aluno A: Henrique Mualem Marti, henriquemm3@al.insper.edu.br
 # - aluno B: Thiago Lopes, thiagod@al.insper.edu.br
 
-
+#teste
 def carregar_cenarios():
     cenarios = {
         "inicio": {
