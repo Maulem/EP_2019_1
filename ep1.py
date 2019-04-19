@@ -102,41 +102,74 @@ def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao
 
 
 
+###Cenarios gerais:
+
 def carregar_cenarios():
     cenarios = {
         "inicio": {
-            "titulo": "Saguao do perigo",
-            "descricao": "Voce esta no saguao de entrada do insper",
+            "titulo": "Rua da perdição",
+            "key": "whatever",
+            "descricao": "Voce esta na frente dos dois predios do Insper.                                       "
+                         "Para qual predio voce quer ir?",
             "opcoes": {
-                "andar professor": "Tomar o elevador para o andar do professor",
-                "biblioteca": "Ir para a biblioteca"
+                "predio 1": "entrar no predio 1",
+                "predio 2": "entrar no predio 2"
             }
         },
-        "andar professor": {
-            "titulo": "Andar do desespero",
-            "descricao": "Voce chegou ao andar da sala do seu professor",
-            "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                "professor": "Falar com o professor"
+        "predio 1": {
+                "titulo": "Predio velhão",
+                "descricao": "Voce esta no saguao de entrada do predio 1",
+                "key": "whatever",
+                "opcoes": {
+                        "inicio": "voltar pra rua",
+                        "biblioteca": "ir para a biblioteca buscar pistas",
+                        "elevador": "ir pro elevador para procurar o professor"
             }
-        },
-        "professor": {
-            "titulo": "O monstro do Python",
-            "descricao": "Voce foi pedir para o professor adiar o EP. "
-                         "O professor revelou que é um monstro disfarçado "
-                         "e devorou sua alma.",
-            "opcoes": {}
-        },
+        },     
         "biblioteca": {
-            "titulo": "Caverna da tranquilidade",
-            "descricao": "Voce esta na biblioteca",
+            "titulo": "A casa dos livros",
+            "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
+            "key": "whatever",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
+                "sala misteriosa": "ir investigar o cheiro misterioso",
+                
+                "predio 1": "voltar para o saguao de entrada do predio 1"
+            }
+        },
+        "sala misteriosa": {
+            "titulo": "O cachorro quente magico",
+            "key": "whatever",
+            "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa.                                        "
+                         "Voce pode come-lo para ganhar alguma habilidade especial...                                        "
+                         "ou talvez deixa-lo la ja que ele nao é seu...                                       ",
+            "opcoes": {
+                "comer": "encher a pança com esse delicioso cachorro quente",
+                "biblioteca": "voltar para a Biblioteca"
+              }
+        },
+        "comer": {#O que acontecera a seguir depende do randint por isso nao botei descricoes nem opcoes.
+            "titulo": "Sorte ou Azar?",
+            "descricao": "",
+            "key": {},
+            "opcoes": {
+                "biblioteca": "voltar para a Biblioteca"
+              }
+        },
+        "elevador": {
+            "titulo": "Caixote de metal",
+            "key": "whatever",
+            "descricao": "Voce esta no elevador",
+            "opcoes": {
+                "inicio": "voltar para o saguao de entrada"
             }
         }
     }
-    nome_cenario_atual = "inicio"
-    return cenarios, nome_cenario_atual
+    nome_cenario_atual = "sala misteriosa"
+    return cenarios, nome_cenario_atual 
+    
+
+cenarios, cenario_atual = carregar_cenarios()
+
 
 aspas = '"'
 def main():
