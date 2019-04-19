@@ -27,6 +27,10 @@ player = "*****"
 game_over = False
 comeu = False
 aspas = '"'
+medalhao_fogo = False
+medalhao_agua = False
+medalhao_neve = False
+medalhao_3_elementos = False
 
 
 ###Animação de entrada:
@@ -108,7 +112,9 @@ def death(game_over):###Raul perdao por botar print dentro de funcao mas nao sei
 print("Bem vindo ao Escape Insper")
 print("Digite o nome do seu jogador:")
 player = input("Nome:")
+'''
 #print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
+'''
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("Bem vindo {0} ao Choices Game!".format(player))
 print("")
@@ -121,6 +127,13 @@ print("Então boa sorte na sua jornada {0}!".format(player))
 
 
 """
+###Sistema de inventarios dos medalhoes:
+
+def medalhoes(fogo, agua, neve):
+    if fogo == True and agua == True and neve == True:
+        return True
+    else:
+        return False
 
 ###Cenarios gerais:
 
@@ -128,7 +141,7 @@ def carregar_cenarios():
     cenarios = {
         "inicio": {
             "titulo": "Rua da perdição",
-            "key": "whatever",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "descricao": "Voce esta na frente dos dois predios do Insper.                                       "
                          "Para qual predio voce quer ir?",
             "opcoes": {
@@ -139,7 +152,7 @@ def carregar_cenarios():
         "predio 1": {
                 "titulo": "Predio velhão",
                 "descricao": "Voce esta no saguao de entrada do predio 1",
-                "key": "whatever",
+                "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
                 "opcoes": {
                         "inicio": "voltar pra rua",
                         "biblioteca": "ir para a biblioteca buscar pistas",
@@ -149,7 +162,7 @@ def carregar_cenarios():
         "biblioteca": {
             "titulo": "A casa dos livros",
             "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
-            "key": "whatever",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "opcoes": {
                 "sala misteriosa": "ir investigar o cheiro misterioso",
                 
@@ -158,7 +171,7 @@ def carregar_cenarios():
         },
         "sala misteriosa": {
             "titulo": "O cachorro quente magico",
-            "key": "whatever",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa.                                        "
                          "Voce pode come-lo para ganhar alguma habilidade especial...                                        "
                          "ou talvez deixa-lo la ja que ele nao é seu...                                       ",
@@ -170,14 +183,14 @@ def carregar_cenarios():
         "comer": {#O que acontecera a seguir depende do randint por isso nao botei descricoes nem opcoes.
             "titulo": "Sorte ou Azar?",
             "descricao": "",
-            "key": {},
+            "key": {},###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "opcoes": {
                 "biblioteca": "voltar para a Biblioteca"
               }
         },
         "elevador": {
             "titulo": "Caixote de metal",
-            "key": "whatever",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "descricao": "Voce esta no elevador",
             "opcoes": {
                 "inicio": "voltar para o saguao de entrada"
@@ -195,6 +208,9 @@ cenarios, cenario_atual = carregar_cenarios()
 
 
 while not game_over:
+    
+    medalhao_3_elementos = medalhoes(medalhao_fogo, medalhao_agua, medalhao_neve)
+    
     cenario_atual = cenarios[cenario_atual]
     
     sala_key = cenario_atual["key"]
@@ -202,7 +218,11 @@ while not game_over:
     if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
         sorte = random.randint(1, 1000)
         if sorte < 801:
-            print("Parabens")
+            print("Ao comer o cahorro quente vc sente uma gosma se formar no fundo do seu estomago!")
+            print("Você então cospe essa gosma e um pedaço atinge sua camisa se tornando um medalhão")
+            print("")
+            print("Parabens {0}!".format(player))
+            print("Você adiquiriu o medalhão do fogo!")
             cenario_atual = "biblioteca"
             del cenarios["biblioteca"]["descricao"]
             cenarios["biblioteca"]["descricao"] = "Uma biblioteca agora vazia e monotona!"
@@ -210,6 +230,7 @@ while not game_over:
             cenarios["biblioteca"]["opcoes"] = {"predio 1": "voltar para o saguao de entrada do predio 1"}
             comeu = True
             game_over = False
+            Medalhao_fogo = True
             
         else:
             print("Inspetora: É proibido comer na biblioteca!")
