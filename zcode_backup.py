@@ -29,6 +29,7 @@ comeu = False
 aspas = '"'
 
 
+
 ###Animação de entrada:
 
 

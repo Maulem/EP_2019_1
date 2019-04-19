@@ -11,6 +11,7 @@ Created on Fri Apr 19 11:41:42 2019
 ###NAO MEXER NEM EDITAR
 
 
+
 def carregar_cenarios():
     cenarios = {
         "inicio": {
