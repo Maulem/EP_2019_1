@@ -176,15 +176,42 @@ def carregar_cenarios():
             }
         }
     }
-    return cenarios
+    nome_cenario_atual = "inicio"
+    return cenarios, nome_cenario_atual 
     
 
-cenarios = carregar_cenarios()
+cenarios, cenario_atual = carregar_cenarios()
 
 
-###Main central game
+###Funcoes dos cenarios do jogo
 
+game_over = False
+while not game_over:
+    cenario_atual = cenarios["cenario_atual"]
+    
+    print("Voce esta no(a) {0}".format(cenario_atual["titulo"]))
+    print(cenario_atual["descricao"])
+    print("Suas opcoes são: {0}".format(cenario_atual["o      
+    
 
+    opcoes = cenario_atual["opcoes"]
+    if len(opcoes) == 0:
+        print("Acabaram-se suas opções! Mwo mwo mwooooo...")
+        game_over = True
+    else:
+
+    # Aluno B: substitua este comentário e a linha abaixo pelo código
+    # para pedir a escolha do usuário.
+        escolha = ""
+
+    if escolha in opcoes:
+        nome_cenario_atual = escolha
+    else:
+        print("Sua indecisão foi sua ruína!")
+        game_over = True
+
+print("Você morreu!")
+    
 
 
 
