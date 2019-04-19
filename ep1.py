@@ -7,7 +7,9 @@
 
 """
 NKO Enterprises Presents: Escape Insper
+
 Created on Tue Apr 16 16:32:14 2019
+
 @author: Maulem and ThiagoD
 """
 ###Imports:
@@ -38,7 +40,7 @@ aspas = '"'
 ###Animacão da morte:
 
 
-def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
+def death(game_over):###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
     if game_over == True:###funcionar só usando return.
         time.sleep(1)
         print()
@@ -99,6 +101,26 @@ def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao
         return "                  Game over!"
 
 
+###Introdução ao game:
+
+"""
+
+print("Bem vindo ao Escape Insper")
+print("Digite o nome do seu jogador:")
+player = input("Nome:")
+#print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
+print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
+print("Bem vindo {0} ao Choices Game!".format(player))
+print("")
+print("Descrição do jogo:")
+print("Você é um aluno do Insper que teve uma crise de insonia e dormiu alguns dias seguidos perdendo aulas e chegando no dia da entrega do EP.")
+print("")
+print("Você então vai tentar pedir para o professor adiar a entrega, mas para isso primeiro vai ter que achar ele. ")
+print("")
+print("Então boa sorte na sua jornada {0}!".format(player))
+
+
+"""
 
 ###Cenarios gerais:
 
@@ -169,22 +191,6 @@ def carregar_cenarios():
 cenarios, cenario_atual = carregar_cenarios()
 
 
-
-aspas = '"'
-def main():
-    print("Na hora do sufoco!")
-    print("------------------")
-    print()
-    print("Parecia uma boa idéia: vou só jogar um pouquinho/assistir Netflix/"
-        "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
-    print()
-    print("É o dia de entregar o EP e você está muuuuito atrasado! Você está "
-        "na entrada do Insper, e quer procurar o professor para pedir um "
-        "adiamento do EP (boa sorte...)")
-    print()
-
-    cenarios, nome_cenario_atual = carregar_cenarios()
-
 ###Jogo central:
 
 
@@ -243,3 +249,66 @@ while not game_over:
             
 
 print(death(True))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
