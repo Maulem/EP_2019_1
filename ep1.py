@@ -247,9 +247,9 @@ while not game_over:
             print("Sua indecisão foi sua ruína!")
             game_over = True
             
-"""
+
 print(death(True))
-"""
+
 
 
 
