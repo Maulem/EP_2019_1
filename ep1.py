@@ -321,9 +321,18 @@ while not game_over:
     sala_easter = cenario_atual["tcha"]#parte da feature do easter egg
     
     aqua_medalhao = cenario_atual["aqua"]#parte da feature do medalhao de agua
+
+    spawn_monster = random.randint(0, 1001)
+
+#Feature de monstros aleatorios
+    if spawn_monster < 899:
+        print()
     
-    if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
-        sorte = random.randint(1, 1000)
+    
+#Feature sorte/azar
+
+    elif len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
+        sorte = random.randint(0, 1001)
         if sorte < 801:
             print('Nome da sala:"comer"')
             print("Ao comer o cahorro quente vc sente uma gosma se formar no fundo do seu estomago!")
@@ -346,14 +355,17 @@ while not game_over:
             time.sleep(1)
             game_over = True
 
+#Sala que só curiosos vao encontrar
 
-    elif len(sala_key) == 0 and comeu == True:
+    elif len(sala_key) == 0 and comeu == True: 
         print("Olha só temos um espertinho por aqui!")#a unica maneira de se chegar aqui é com o portal!
         print("Parabens {0}, vc ganhou o medalhao dos 3 elementos completo!".format(player))
         print("Sugestão: pule novamente {0}!".format(player))
         time.sleep(3)
         cenario_atual = "biblioteca"
         medalhao3_elementos = True
+
+#Portal
 
     elif len(descricao) == 0:
         
@@ -367,6 +379,9 @@ while not game_over:
                 print("Destino invalido")
                 destino = input("-")
             cenario_atual = destino
+
+#Easter egg:
+
     elif len(sala_easter) == 0:
         print("Parabens vc achou o easter egg secreto!")
         print("Esse jogo foi criado pelo Maulem e pelo ThiagoD!")
@@ -383,6 +398,9 @@ while not game_over:
             print("Destino invalido")
             destino = input("-")
         cenario_atual = destino
+
+#Quando vc entra no predio 2
+
     elif len(aqua_medalhao) == 0:
         print("")
         print("Você entra no predio e percebe uma inundacao!")
@@ -394,6 +412,9 @@ while not game_over:
         del cenarios["inicio"]["descricao"]
         cenarios["inicio"]["descricao"] = "Ja que o predio 2 ta inundado só resta o predio 1!"
         Medalhao_agua = True
+
+#Jogo normal qdo nao acontece nada de diferente
+
     else:
         print("")
         print("{0}.".format(cenario_atual["titulo"]))
