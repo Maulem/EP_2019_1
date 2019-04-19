@@ -142,6 +142,7 @@ def carregar_cenarios():
         "inicio": {
             "titulo": "Rua da perdição",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Voce esta na frente dos dois predios do Insper.                                       "
                          "Para qual predio voce quer ir?",
             "opcoes": {
@@ -153,6 +154,7 @@ def carregar_cenarios():
                 "titulo": "Predio velhão",
                 "descricao": "Voce esta no saguao de entrada do predio 1",
                 "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+                "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
                 "opcoes": {
                         "inicio": "voltar pra rua",
                         "biblioteca": "ir para a biblioteca buscar pistas",
@@ -163,6 +165,7 @@ def carregar_cenarios():
             "titulo": "A casa dos livros",
             "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "opcoes": {
                 "sala misteriosa": "ir investigar o cheiro misterioso",
                 
@@ -172,6 +175,7 @@ def carregar_cenarios():
         "sala misteriosa": {
             "titulo": "O cachorro quente magico",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa.                                        "
                          "Voce pode come-lo para ganhar alguma habilidade especial...                                        "
                          "ou talvez deixa-lo la ja que ele nao é seu...                                       ",
@@ -180,10 +184,11 @@ def carregar_cenarios():
                 "biblioteca": "voltar para a Biblioteca"
               }
         },
-        "comer": {#O que acontecera a seguir depende do randint por isso nao botei descricoes nem opcoes.
+        "comer": {#O que acontecera a seguir depende do randint por isso nao importa descricao e opcoes.
             "titulo": "Sorte ou Azar?",
-            "descricao": "",
-            "key": {},###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "descricao": "whatever",
+            "key": {},###     ATIVA A SALA SECRETA
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "opcoes": {
                 "biblioteca": "voltar para a Biblioteca"
               }
@@ -191,6 +196,7 @@ def carregar_cenarios():
         "5 andar": {
             "titulo": "O andar da comida cara",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
                          "Voce avista alguem de costas que parece ser o seu professor...                                        "
                          "Mas não dá pra você enxergar direito, talvez se vc chegar mais perto...                                       ",
@@ -199,23 +205,26 @@ def carregar_cenarios():
                 "elevador": "voltar para o elevador"
               }
         },
-<<<<<<< HEAD
+
         "prof": {
-=======
+
             "prof": {
->>>>>>> e0bfb3e7a3c6b96b74df16af3c19d8b59207eddc
+
             "titulo": "O comilão",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Voce se aproxima do professor rapidamente.                                                 "
                          "Voce escorrega em um cubo de gelo e sai deslizando pelo chão...                                        "
                          "Ao se aproximar do professor voce oercebe que na verdade é só mais um gordinho almoçando!"
                          "Voce entao cai no prato de comida do comilão e ele literalmente te come!                                       ",
             "opcoes": {}
+            }
         },
-<<<<<<< HEAD
+
         "cobertura": {
             "titulo": "A vista dos ceus",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Voce observa uma linda vista daqui de cima...                                        "
                          "Da uma vontadezinha de pular...                                        "
                          "Mas não, isso seria loucura...                                       ",
@@ -227,6 +236,7 @@ def carregar_cenarios():
         "pular": {
             "titulo": "O voo setentrional",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Um jato de vento subitamente rasga voçê por dentro.                                        "
                          "O que era para durar segundos dura uma eternidade...                                        "
                          "Você percebe um portal se formando...                                       ",
@@ -238,17 +248,30 @@ def carregar_cenarios():
         "portal": {
             "titulo": "Voo interdimensional",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": {},###descricao vazia para ativar o portal
             "opcoes": {
                 "prof": "ir falar o professor",
                 "elevador": "voltar para o elevador"
               }
         },
-=======
->>>>>>> e0bfb3e7a3c6b96b74df16af3c19d8b59207eddc
+        "easter egg": {
+            "titulo": "Parabens vc encontrou o Easter Egg escondido!",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": {},###   ATIVA O EASTER EGG
+            "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
+                         "Voce avista alguem de costas que parece ser o seu professor...                                        "
+                         "Mas não dá pra você enxergar direito, talvez se vc chegar mais perto...                                       ",
+            "opcoes": {
+                "prof": "ir falar o professor",
+                "elevador": "voltar para o elevador"
+              }
+        },
+
         "elevador": {
             "titulo": "Caixote de metal",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "descricao": "Voce esta no elevador",
             "opcoes": {
                 "inicio": "voltar para o saguao de entrada",
@@ -275,7 +298,10 @@ while not game_over:
     cenario_atual = cenarios[cenario_atual]
     
     sala_key = cenario_atual["key"]#parte da feature de sorte e azar
+    
     descricao = cenario_atual["descricao"]#parte da feature do portal
+    
+    sala_easter = cenario_atual["tcha"]#parte da feature do easter egg
     
     if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
         sorte = random.randint(1, 1000)
@@ -322,7 +348,21 @@ while not game_over:
                 print("Destino invalido")
                 destino = input("-")
             cenario_atual = destino
-            
+    elif len(sala_easter) == 0:
+        print("Parabens vc achou o easter egg secreto!")
+        print("Esse jogo foi criado pelo Maulem e pelo ThiagoD!")
+        print("Obrigado por jogar o nosso jogo {0}".format(player))
+        time.sleep(5)
+        print(death(True))
+        print("Zoeira o jogo ainda não acabou!")
+        print("")
+        print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
+        print("Pra onde você quer ir?")
+        destino = input("-")
+        while destino not in cenarios:
+            print("Destino invalido")
+            destino = input("-")
+        cenario_atual = destino
     else:
         print("")
         print("{0}.".format(cenario_atual["titulo"]))
