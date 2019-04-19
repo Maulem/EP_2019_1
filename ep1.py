@@ -109,6 +109,8 @@ Created on Tue Apr 16 16:32:14 2019
 
 ###Introdução ao game:
 
+"""
+
 print("Bem vindo ao Choices Game")
 print("Digite o nome do seu jogador:")
 player = input("Nome:")
@@ -122,6 +124,9 @@ print("")
 print("Você então vai tentar pedir para o professor adiar a entrega, mas para isso primeiro vai ter que achar ele. ")
 print("")
 print("Então boa sorte na sua jornada {0}!".format(player))
+
+
+"""
 
 ###Cenarios gerais:
 
@@ -159,10 +164,9 @@ def carregar_cenarios():
                          "Voce pode come-lo para ganhar alguma habilidade especial... "
                          "ou talvez deixa-lo la ja que ele nao é seu...",
             "opcoes": {
-                    "opcoes": {
                 "comer": "Encher sua barriga com esse delicioso cachorro quente",
                 "biblioteca": "Voltar para a Biblioteca"
-            }
+              }
         },
         "elevador": {
             "titulo": "Caverna da tranquilidade",
@@ -172,21 +176,19 @@ def carregar_cenarios():
             }
         }
     }
-    nome_cenario_atual = "inicio"
-    return cenarios, nome_cenario_atual
+    return cenarios
     
 
+cenarios = carregar_cenarios()
+
+
+###Main central game
 
 
 
 
 
-
-
-
-
-
-
+ 
 
 
 
