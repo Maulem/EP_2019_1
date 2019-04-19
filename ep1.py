@@ -128,6 +128,7 @@ def carregar_cenarios():
     cenarios = {
         "inicio": {
             "titulo": "Rua da perdição",
+            "key": "whatever",
             "descricao": "Voce esta na frente dos dois predios do Insper.                                       "
                          "Para qual predio voce quer ir?",
             "opcoes": {
@@ -138,6 +139,7 @@ def carregar_cenarios():
         "predio 1": {
                 "titulo": "Predio velhão",
                 "descricao": "Voce esta no saguao de entrada do predio 1",
+                "key": "whatever",
                 "opcoes": {
                         "inicio": "voltar pra rua",
                         "biblioteca": "ir para a biblioteca buscar pistas",
@@ -147,13 +149,16 @@ def carregar_cenarios():
         "biblioteca": {
             "titulo": "A casa dos livros",
             "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
+            "key": "whatever",
             "opcoes": {
                 "sala misteriosa": "ir investigar o cheiro misterioso",
+                
                 "predio 1": "voltar para o saguao de entrada do predio 1"
             }
         },
         "sala misteriosa": {
             "titulo": "O cachorro quente magico",
+            "key": "whatever",
             "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa.                                        "
                          "Voce pode come-lo para ganhar alguma habilidade especial...                                        "
                          "ou talvez deixa-lo la ja que ele nao é seu...                                       ",
@@ -165,19 +170,21 @@ def carregar_cenarios():
         "comer": {#O que acontecera a seguir depende do randint por isso nao botei descricoes nem opcoes.
             "titulo": "Sorte ou Azar?",
             "descricao": "",
+            "key": {},
             "opcoes": {
                 "biblioteca": "voltar para a Biblioteca"
               }
         },
         "elevador": {
             "titulo": "Caixote de metal",
+            "key": "whatever",
             "descricao": "Voce esta no elevador",
             "opcoes": {
                 "inicio": "voltar para o saguao de entrada"
             }
         }
     }
-    nome_cenario_atual = "inicio"
+    nome_cenario_atual = "sala misteriosa"
     return cenarios, nome_cenario_atual 
     
 
@@ -189,11 +196,20 @@ cenarios, cenario_atual = carregar_cenarios()
 
 while not game_over:
     cenario_atual = cenarios[cenario_atual]
-    if cenario_atual == cenarios["comer"] and comeu == False:###Primeira feature(Sorte ou Azar?)
+    
+    sala_key = cenario_atual["key"]
+    
+    if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
         sorte = random.randint(1, 1000)
         if sorte < 801:
             print("Parabens")
-            cenario_atual = cenarios["biblioteca"]
+            cenario_atual = "biblioteca"
+            del cenarios["biblioteca"]["descricao"]
+            cenarios["biblioteca"]["descricao"] = "Uma biblioteca agora vazia e monotona!"
+            del cenarios["biblioteca"]["opcoes"]
+            cenarios["biblioteca"]["opcoes"] = {"predio 1": "voltar para o saguao de entrada do predio 1"}
+            comeu = True
+            game_over = False
             
         else:
             print("Inspetora: É proibido comer na biblioteca!")
@@ -202,11 +218,11 @@ while not game_over:
             time.sleep(1)
             game_over = True
         
-        
-        
-    elif cenario_atual == cenarios["comer"] and comeu == True:
+
+    elif len(sala_key) == 0 and comeu == True:
         print("Você ja passou por aqui!")
-        cenario_atual = cenarios["biblioteca"]
+        cenario_atual = "biblioteca"
+
     else:
         print("")
         print(cenario_atual["titulo"])
