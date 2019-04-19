@@ -12,6 +12,11 @@ Created on Tue Apr 16 16:32:14 2019
 
 @author: Maulem and ThiagoD
 """
+###Imports:
+
+
+import time
+
 
 ###Animação de entrada:
 
@@ -20,6 +25,69 @@ Created on Tue Apr 16 16:32:14 2019
 
 
 
+
+###Animacão da morte:
+
+
+def death(game_over):
+    if game_over == True:
+        time.sleep(1)
+        print()
+        print('                  uuuuuuu')
+        time.sleep(0.1)
+        print('             uu$$$$$$$$$$$uu')
+        time.sleep(0.1)
+        print('           uu$$$$$$$$$$$$$$$$$uu')
+        time.sleep(0.1)
+        print('          u$$$$$$$$$$$$$$$$$$$$$u      ')
+        time.sleep(0.1)
+        print('         u$$$$$$$$$$$$$$$$$$$$$$$u      ')
+        time.sleep(0.1)
+        print('        u$$$$$$$$$$$$$$$$$$$$$$$$$u     ')
+        time.sleep(0.1)
+        print('        u$$$$$$$$$$$$$$$$$$$$$$$$$u     ')
+        time.sleep(0.1)
+        print('        u$$$$$$"   "$$$"   "$$$$$$u     ')
+        time.sleep(0.1)
+        print('        "$$$$"      u$u       $$$$"      ')
+        time.sleep(0.1)
+        print('         $$$u       u$u       u$$$      ')
+        time.sleep(0.1)
+        print('         $$$u      u$$$u      u$$$      ')
+        time.sleep(0.1)
+        print('          "$$$$uu$$$   $$$uu$$$$"      ')
+        time.sleep(0.1)
+        print('           "$$$$$$$"   "$$$$$$$"     ')
+        time.sleep(0.1)
+        print('             u$$$$$$$u$$$$$$$u')
+        time.sleep(0.1)
+        print('              u$"$"$"$"$"$"$u')
+        time.sleep(0.1)
+        print('   uuu        $$u$ $ $ $ $u$$       uuu')
+        time.sleep(0.1)
+        print('  u$$$$        $$$$$u$u$u$$$       u$$$$')
+        time.sleep(0.1)
+        print('   $$$$$uu      "$$$$$$$$$"     uu$$$$$$')
+        time.sleep(0.1)
+        print(' u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$')
+        time.sleep(0.1)
+        print(' $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"')
+        time.sleep(0.1)
+        print('  """      ""$$$$$$$$$$$uu ""$"""')
+        time.sleep(0.1)
+        print('            uuuu ""$$$$$$$$$$uuu')
+        time.sleep(0.1)
+        print('   u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$')
+        time.sleep(0.1)
+        print('   $$$$$$$$$$""""           ""$$$$$$$$$$$"')
+        time.sleep(0.1)
+        print('    "$$$$$"                      ""$$$$""')
+        time.sleep(0.1)
+        print('      $$$"                         $$$$"')
+        print()
+        time.sleep(1)
+        
+        return "Game over!"
 
 
 ###Introdução ao game:
@@ -122,10 +190,12 @@ while not game_over:
     if escolha in opcoes:
         cenario_atual = escolha
     else:
-        print("Sua indecisão foi sua ruína!")
-        game_over = True
+        while escolha not in opcoes:
+            print("Escolha invalida!")
+            escolha = input("-")
+            
 
-print("Você morreu!")
+print(death(True))
     
 
 
