@@ -199,7 +199,11 @@ def carregar_cenarios():
                 "elevador": "voltar para o elevador"
               }
         },
+<<<<<<< HEAD
         "prof": {
+=======
+            "prof": {
+>>>>>>> e0bfb3e7a3c6b96b74df16af3c19d8b59207eddc
             "titulo": "O comilão",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "descricao": "Voce se aproxima do professor rapidamente.                                                 "
@@ -208,6 +212,7 @@ def carregar_cenarios():
                          "Voce entao cai no prato de comida do comilão e ele literalmente te come!                                       ",
             "opcoes": {}
         },
+<<<<<<< HEAD
         "cobertura": {
             "titulo": "A vista dos ceus",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
@@ -239,6 +244,8 @@ def carregar_cenarios():
                 "elevador": "voltar para o elevador"
               }
         },
+=======
+>>>>>>> e0bfb3e7a3c6b96b74df16af3c19d8b59207eddc
         "elevador": {
             "titulo": "Caixote de metal",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
@@ -337,11 +344,16 @@ while not game_over:
         if escolha in opcoes:
             cenario_atual = escolha
         else:
+
             print("Que pena {0}! Você morreu!".format(player))
+
+            print("Que pena {0}!".format(player))
+
             game_over = True
             
 
 print(death(True))
+
 
 
 
