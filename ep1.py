@@ -19,7 +19,6 @@ import time
 import random
 
 
-
 ###Variaveis iniciais:
 
 
@@ -30,8 +29,9 @@ aspas = '"'
 medalhao_fogo = False
 medalhao_agua = False
 medalhao_neve = False
-medalhao_3_elementos = False
-
+medalhao_3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
+medalhao3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
+contador = 0 ###Contador de erros
 
 ###Animação de entrada:
 
@@ -44,7 +44,7 @@ medalhao_3_elementos = False
 ###Animacão da morte:
 
 
-def death(game_over):###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
+def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
     if game_over == True:###funcionar só usando return.
         time.sleep(1)
         print()
@@ -143,6 +143,7 @@ def carregar_cenarios():
             "titulo": "Rua da perdição",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce esta na frente dos dois predios do Insper.                                       "
                          "Para qual predio voce quer ir?",
             "opcoes": {
@@ -155,17 +156,27 @@ def carregar_cenarios():
                 "descricao": "Voce esta no saguao de entrada do predio 1",
                 "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
                 "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+                "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
                 "opcoes": {
                         "inicio": "voltar pra rua",
                         "biblioteca": "ir para a biblioteca buscar pistas",
                         "elevador": "ir pro elevador para procurar o professor"
             }
-        },     
+        },
+        "predio 2": {
+                "titulo": "A grande inundação",
+                "descricao": "Na entrada do predio 2 vc percebe que esta tudo inundado",
+                "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+                "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+                "aqua": {},###       MEDALHAO DE AGUA ATIVADO
+                "opcoes": {"inicio": "voltar pra rua"}
+        },            
         "biblioteca": {
             "titulo": "A casa dos livros",
             "descricao": "Voce sente um cheiro misterioso e quente vindo de uma das salas do fundao!",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "opcoes": {
                 "sala misteriosa": "ir investigar o cheiro misterioso",
                 
@@ -176,6 +187,7 @@ def carregar_cenarios():
             "titulo": "O cachorro quente magico",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce ve um cachorro quente cheiroso e quentinho em cima da mesa.                                        "
                          "Voce pode come-lo para ganhar alguma habilidade especial...                                        "
                          "ou talvez deixa-lo la ja que ele nao é seu...                                       ",
@@ -189,6 +201,7 @@ def carregar_cenarios():
             "descricao": "whatever",
             "key": {},###     ATIVA A SALA SECRETA
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "opcoes": {
                 "biblioteca": "voltar para a Biblioteca"
               }
@@ -197,6 +210,7 @@ def carregar_cenarios():
             "titulo": "O andar da comida cara",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
                          "Voce avista alguem de costas que parece ser o seu professor...                                        "
                          "Mas não dá pra você enxergar direito, talvez se vc chegar mais perto...                                       ",
@@ -208,26 +222,25 @@ def carregar_cenarios():
 
         "prof": {
 
-            "prof": {
-
             "titulo": "O comilão",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce se aproxima do professor rapidamente.                                                 "
                          "Voce escorrega em um cubo de gelo e sai deslizando pelo chão...                                        "
-                         "Ao se aproximar do professor voce oercebe que na verdade é só mais um gordinho almoçando!"
+                         "Ao se aproximar do professor voce percebe que na verdade é só mais um gordinho almoçando!"
                          "Voce entao cai no prato de comida do comilão e ele literalmente te come!                                       ",
             "opcoes": {}
-            }
         },
 
         "cobertura": {
             "titulo": "A vista dos ceus",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
-            "descricao": "Voce observa uma linda vista daqui de cima...                                        "
-                         "Da uma vontadezinha de pular...                                        "
-                         "Mas não, isso seria loucura...                                       ",
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
+            "descricao": "Voce observa uma linda vista daqui de cima...                                              "
+                         "Da uma vontadezinha de pular...                                                         "
+                         "Mas não, isso seria loucura...                                                            ",
             "opcoes": {
                 "pular": "se jogar de cabeça pelo precipicio",
                 "elevador": "voltar para o elevador"
@@ -237,6 +250,7 @@ def carregar_cenarios():
             "titulo": "O voo setentrional",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Um jato de vento subitamente rasga voçê por dentro.                                        "
                          "O que era para durar segundos dura uma eternidade...                                        "
                          "Você percebe um portal se formando...                                       ",
@@ -249,16 +263,18 @@ def carregar_cenarios():
             "titulo": "Voo interdimensional",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
-            "descricao": {},###descricao vazia para ativar o portal
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
+            "descricao": {},###       DESCRICAO VAZIA PARA ATIVAR O PORTAL
             "opcoes": {
                 "prof": "ir falar o professor",
                 "elevador": "voltar para o elevador"
               }
         },
-        "easter egg": {
+        "easter egg": {#O que acontecera a seguir depende do tcha por isso nao importa descricao e opcoes.
             "titulo": "Parabens vc encontrou o Easter Egg escondido!",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": {},###   ATIVA O EASTER EGG
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
                          "Voce avista alguem de costas que parece ser o seu professor...                                        "
                          "Mas não dá pra você enxergar direito, talvez se vc chegar mais perto...                                       ",
@@ -272,6 +288,7 @@ def carregar_cenarios():
             "titulo": "Caixote de metal",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce esta no elevador",
             "opcoes": {
                 "inicio": "voltar para o saguao de entrada",
@@ -303,11 +320,14 @@ while not game_over:
     
     sala_easter = cenario_atual["tcha"]#parte da feature do easter egg
     
+    aqua_medalhao = cenario_atual["aqua"]#parte da feature do medalhao de agua
+    
     if len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
         sorte = random.randint(1, 1000)
         if sorte < 801:
+            print('Nome da sala:"comer"')
             print("Ao comer o cahorro quente vc sente uma gosma se formar no fundo do seu estomago!")
-            print("Você então cospe essa gosma e um pedaço atinge sua camisa se tornando um medalhão")
+            print("Você então cospe essa gosma e um pedaço atinge sua camisa se tornando um simbolo de fogo")
             print("")
             print("Parabens {0}!".format(player))
             print("Você adiquiriu o medalhão do fogo!")
@@ -317,7 +337,6 @@ while not game_over:
             del cenarios["biblioteca"]["opcoes"]
             cenarios["biblioteca"]["opcoes"] = {"predio 1": "voltar para o saguao de entrada do predio 1"}
             comeu = True
-            game_over = False
             Medalhao_fogo = True
             
         else:
@@ -334,11 +353,11 @@ while not game_over:
         print("Sugestão: pule novamente {0}!".format(player))
         time.sleep(3)
         cenario_atual = "biblioteca"
-        medalhao_3_elementos = True
+        medalhao3_elementos = True
         
     elif len(descricao) == 0:
         
-        if medalhao_3_elementos == True:
+        if medalhao_3_elementos == True or medalhao3_elementos == True:
             cenario_atual = "easter egg"
         else:
             print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
@@ -351,18 +370,30 @@ while not game_over:
     elif len(sala_easter) == 0:
         print("Parabens vc achou o easter egg secreto!")
         print("Esse jogo foi criado pelo Maulem e pelo ThiagoD!")
-        print("Obrigado por jogar o nosso jogo {0}".format(player))
+        print("Obrigado por jogar o nosso jogo {0}!".format(player))
         time.sleep(5)
         print(death(True))
+        print("")
         print("Zoeira o jogo ainda não acabou!")
         print("")
         print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
-        print("Pra onde você quer ir?")
+        print("Pra onde você quer ir?(se nao lembrar de nenhum digita 'inicio')")
         destino = input("-")
         while destino not in cenarios:
             print("Destino invalido")
             destino = input("-")
         cenario_atual = destino
+    elif len(aqua_medalhao) == 0:
+        print("")
+        print("Você entra no predio e percebe uma inundacao!")
+        print("Um monstro sobe no seu peito formando um simbolo de agua")
+        print("Você adiquiriu o medalhão de agua!")
+        cenario_atual = "inicio"
+        del cenarios["inicio"]["opcoes"]
+        cenarios["inicio"]["opcoes"] = {"predio 1": "entrar no predio 1"}
+        del cenarios["inicio"]["descricao"]
+        cenarios["inicio"]["descricao"] = "Ja que o predio 2 ta inundado só resta o predio 1!"
+        Medalhao_agua = True
     else:
         print("")
         print("{0}.".format(cenario_atual["titulo"]))
@@ -381,26 +412,27 @@ while not game_over:
         else:
             escolha = input("-")
         
-        if escolha in opcoes:
-            cenario_atual = escolha
-        else:
-
+        while escolha not in opcoes and contador < 4:
+            if contador < 4:
+                print("Escolha invalida!")
+                escolha = input("-")
+                contador+=1
+            else:
+                print("Que pena {0}! Acabaram as suas chances!".format(player))
+                game_over = True
+        if contador >= 4:
             print("Que pena {0}! Você morreu!".format(player))
-
-            print("Que pena {0}!".format(player))
-
+            time.sleep(1)
             game_over = True
+        else:
+            cenario_atual = escolha
+            contador = 0
+
+
+            
             
 
 print(death(True))
-
-
-
-
-
-
-
-
 
 
 
