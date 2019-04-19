@@ -4,6 +4,104 @@
 # - aluno A: Henrique Mualem Marti, henriquemm3@al.insper.edu.br
 # - aluno B: Thiago Lopes, thiagod@al.insper.edu.br
 
+
+"""
+NKO Enterprises Presents: Escape Insper
+
+Created on Tue Apr 16 16:32:14 2019
+
+@author: Maulem and ThiagoD
+"""
+###Imports:
+
+
+import time
+import random
+
+
+
+###Variaveis iniciais:
+
+
+player = "*****"
+game_over = False
+comeu = False
+aspas = '"'
+
+
+###Animação de entrada:
+
+
+
+
+
+
+
+###Animacão da morte:
+
+
+def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
+    if game_over == True:###funcionar só usando return.
+        time.sleep(1)
+        print()
+        print('                  uuuuuuu')
+        time.sleep(0.1)
+        print('             uu$$$$$$$$$$$uu')
+        time.sleep(0.1)
+        print('           uu$$$$$$$$$$$$$$$$$uu')
+        time.sleep(0.1)
+        print('          u$$$$$$$$$$$$$$$$$$$$$u      ')
+        time.sleep(0.1)
+        print('         u$$$$$$$$$$$$$$$$$$$$$$$u      ')
+        time.sleep(0.1)
+        print('        u$$$$$$$$$$$$$$$$$$$$$$$$$u     ')
+        time.sleep(0.1)
+        print('        u$$$$$$$$$$$$$$$$$$$$$$$$$u     ')
+        time.sleep(0.1)
+        print('        u$$$$$$"   "$$$"   "$$$$$$u     ')
+        time.sleep(0.1)
+        print('        "$$$$"      u$u       $$$$"      ')
+        time.sleep(0.1)
+        print('         $$$u       u$u       u$$$      ')
+        time.sleep(0.1)
+        print('         $$$u      u$$$u      u$$$      ')
+        time.sleep(0.1)
+        print('          "$$$$uu$$$   $$$uu$$$$"      ')
+        time.sleep(0.1)
+        print('           "$$$$$$$"   "$$$$$$$"     ')
+        time.sleep(0.1)
+        print('             u$$$$$$$u$$$$$$$u')
+        time.sleep(0.1)
+        print('              u$"$"$"$"$"$"$u')
+        time.sleep(0.1)
+        print('   uuu        $$u$ $ $ $ $u$$       uuu')
+        time.sleep(0.1)
+        print('  u$$$$        $$$$$u$u$u$$$       u$$$$')
+        time.sleep(0.1)
+        print('   $$$$$uu      "$$$$$$$$$"     uu$$$$$$')
+        time.sleep(0.1)
+        print(' u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$')
+        time.sleep(0.1)
+        print(' $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"')
+        time.sleep(0.1)
+        print('  """      ""$$$$$$$$$$$uu ""$"""')
+        time.sleep(0.1)
+        print('            uuuu ""$$$$$$$$$$uuu')
+        time.sleep(0.1)
+        print('   u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$')
+        time.sleep(0.1)
+        print('   $$$$$$$$$$""""           ""$$$$$$$$$$$"')
+        time.sleep(0.1)
+        print('    "$$$$$"                      ""$$$$""')
+        time.sleep(0.1)
+        print('      $$$"                         $$$$"')
+        print()
+        time.sleep(1)
+        
+        return "                  Game over!"
+
+
+
 def carregar_cenarios():
     cenarios = {
         "inicio": {
