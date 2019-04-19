@@ -40,7 +40,7 @@ def carregar_cenarios():
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
-
+aspas = '"'
 def main():
     print("Na hora do sufoco!")
     print("------------------")
@@ -59,8 +59,14 @@ def main():
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
 
-        # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.
+        print("")
+        print(cenario_atual["titulo"])
+        print("-" * len(cenario_atual["titulo"]))
+        print(cenario_atual["descricao"])
+        print("")
+        print("Suas opcoes são:")
+        for chave in cenario_atual["opcoes"]:
+            print("Digite: {0}{1}{2} para {3}".format(aspas, chave, aspas, cenario_atual["opcoes"][chave]))
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
