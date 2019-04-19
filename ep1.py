@@ -356,7 +356,7 @@ while not game_over:
         medalhao3_elementos = True
 
     elif len(descricao) == 0:
-
+        
         if medalhao_3_elementos == True or medalhao3_elementos == True:
             cenario_atual = "easter egg"
         else:
@@ -428,19 +428,7 @@ while not game_over:
             cenario_atual = escolha
             contador = 0
 
-
-
-
-
 print(death(True))
-
-
-
-
-
-
-
-
 
 
 
