@@ -17,18 +17,16 @@ depois entrar no portal(pulando da cobertura do insper).
 """
 ###Imports:
 
-
 import time
 import random
 
-
 ###Variaveis iniciais:
 
-game_win = 0
-player = "*****"
-game_over = False
-comeu = False
-aspas = '"'
+game_win = 0 #500 para vencer o jogo
+player = "*****" #nome inicial para evitar bugs
+game_over = False #fim de jogo
+comeu = False #feature sorte e itens magicos
+aspas = '"' #escrever aspas no .format
 medalhao_fogo = False
 medalhao_agua = False
 medalhao_neve = False
@@ -38,13 +36,25 @@ contador = 0 ###Contador de erros
 vida_player = 100
 vida_boneco = 20
 vida_EL_RAUL = 100
-medalha_EL_RAUL = False
+medalha_EL_RAUL = False #medalha ganha ao derrotar EL RAUL
 
 ###Animação de entrada:
 
 
-
-
+print("Initializing...")
+time.sleep(0.2)
+print("            ______           ______   ______    ___ ___    ______")
+time.sleep(0.2)
+print("|       |  |        |       |        |      |  |   |   |  |      ")
+time.sleep(0.2)
+print("|       |  |        |       |        |      |  |   |   |  |      ")
+time.sleep(0.2)
+print("|   |   |  |----    |       |        |      |  |   |   |  |----  ")
+time.sleep(0.2)
+print("|   |   |  |        |       |        |      |  |       |  |      ")
+time.sleep(0.2)
+print("|___|___|  |______  |_____  |______  |______|  |       |  |______")
+time.sleep(0.2)
 
 
 
@@ -112,31 +122,34 @@ def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao
         return "                  Game over!"
 
 ###Animação de vencer o jogo:
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+def win(game):        ###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
+    if game == True:  ###funcionar só usando return.
+        time.sleep(0.2)
+        print("                                                        ") 
+        time.sleep(0.2)
+        print("     \   /   ____            |       |   |   |\    |   |")
+        time.sleep(0.2)
+        print("      \ /   |    |  |   |    |       |   |   | \   |   |")
+        time.sleep(0.2)    
+        print("       |    |    |  |   |    |   |   |   |   |  \  |   |")
+        time.sleep(0.2)
+        print("       |    |    |  |   |    |   |   |   |   |   \ |   |")
+        time.sleep(0.2)
+        print("       |    |____|  |___|    |___|___|   |   |    \|   o")  
+        time.sleep(0.2)
+        return "Parabens!"
+
 ###Introdução ao game:
 
-"""
 
 print("Bem vindo ao Escape Insper")
 print("Digite o nome do seu jogador:")
 player = input("Nome:")
-'''
-#print("\x1b[2J\x1b[1;1H") ###Esse comando limpa a tela do console do usuario
-'''
+
+'''print("\x1b[2J\x1b[1;1H") '''###Esse comando limpa a tela do console do usuario ##decidi nao usar porque nao sei se vc gostaria
+
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("Bem vindo {0} ao Choices Game!".format(player))
 print("")
@@ -148,8 +161,7 @@ print("")
 print("Então boa sorte na sua jornada {0}!".format(player))
 
 
-"""
-###Sistema de inventarios dos medalhoes(feature 3):
+###Sistema de inventarios dos medalhoes:
 
 def medalhoes(fogo, agua, neve):
     if fogo == True and agua == True and neve == True:
@@ -546,8 +558,8 @@ while not game_over and game_win != 500:
         else:
             escolha = input("-")
 
-        while escolha not in opcoes and contador < 5:
-            if contador < 4:
+        while escolha not in opcoes and contador < 4:
+            if contador < 5:
                 print("Escolha invalida!")
                 escolha = input("-")
                 contador+=1
