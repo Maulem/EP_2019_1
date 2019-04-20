@@ -27,9 +27,9 @@ player = "*****" #nome inicial para evitar bugs
 game_over = False #fim de jogo
 comeu = False #feature sorte e itens magicos
 aspas = '"' #escrever aspas no .format
-medalhao_fogo = False
-medalhao_agua = False
-medalhao_neve = False
+medalhao_fogo = 0
+medalhao_agua = 0
+medalhao_neve = 0
 medalhao_3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
 medalhao3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
 contador = 0 ###Contador de erros
@@ -139,6 +139,7 @@ def win(game):        ###Raul perdao por botar print dentro de funcao mas nao se
         time.sleep(0.2)
         print("       |    |____|  |___|    |___|___|   |   |    \|   o")  
         time.sleep(0.2)
+        print("")
         return "Parabens!"
 
 ###Introdução ao game:
@@ -152,19 +153,24 @@ player = input("Nome:")
 
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("Bem vindo {0} ao Choices Game!".format(player))
+time.sleep(1)
 print("")
 print("Descrição do jogo:")
+time.sleep(1)
 print("Você é um aluno do Insper que teve uma crise de insonia e dormiu alguns dias seguidos perdendo aulas e chegando no dia da entrega do EP.")
 print("")
+time.sleep(1)
 print("Você então vai tentar pedir para o professor adiar a entrega, mas para isso primeiro vai ter que achar ele. ")
 print("")
+time.sleep(1)
 print("Então boa sorte na sua jornada {0}!".format(player))
-
+print("")
+time.sleep(1)
 
 ###Sistema de inventarios dos medalhoes:
 
 def medalhoes(fogo, agua, neve):
-    if fogo == True and agua == True and neve == True:
+    if fogo == 1 and agua == 1 and neve == 1:
         return True
     else:
         return False
@@ -266,6 +272,18 @@ def carregar_cenarios():
                          "Voce entao cai no prato de comida do comilão e ele literalmente te come!                                       ",
             "opcoes": {}
         },
+        "morrer": {
+
+            "titulo": "Morte certa",
+            "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
+            "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
+            "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
+            "descricao": "Voce se esborracha no chao.                                                         "
+                         "Voce tem uma recordacao de toda a sua vida...                                                      "
+                         "E percebe que talvez devesse ter pulado com os 3 medalhoes no portal!                              "
+                         "Voce morre!                                       ",
+            "opcoes": {}
+        },
 
         "cobertura": {
             "titulo": "A vista dos ceus",
@@ -360,7 +378,7 @@ while not game_over and game_win != 500:
     
 #Feature de um chefao que oferece uma dica se vc o vencer
 
-    if spawn_monster < 20 and medalha_EL_RAUL == False:
+    if spawn_monster < 60 and medalha_EL_RAUL == False:
         print("A wild mexican EL RAUL appears!")
         print("O que você pretende fazer em relação a esse mexicano que parece seu professor?")
         print('Opções: "enfrentar" ou "fugir"')
@@ -400,14 +418,19 @@ while not game_over and game_win != 500:
                 print("Apos fala isso EL RAUL some que nem fumaça!")
                 print("")
                 print("Voce volta misteriosamente para o inicio!")
+                print("")
                 time.sleep(5)
                 cenario_atual = "inicio"
                 medalha_EL_RAUL = True
             else:
                 game_over = True
+        else:
+            print("Voce volta misteriosamente para o inicio!")
+            print("")
+            cenario_atual = "inicio"
 
 #Feature de monstros aleatorios e combate
-    elif spawn_monster < 40 and medalhao_neve == False:
+    elif spawn_monster < 120 and medalhao_neve == False:
         print("Um boneco de neve doidão apareceu!")
         print("Você quer enfrenta-lo ou fugir?")
         print('Opções: "enfrentar" ou "fugir"')
@@ -447,13 +470,15 @@ while not game_over and game_win != 500:
             print("")
             time.sleep(2)
             print("Fatality!")
+            print("")
             time.sleep(3)
             print("Voce volta misteriosamente para o inicio com um medalhao de neve como recompensa pela sua batalha!")
             time.sleep(4)
             cenario_atual = "inicio"
-            medalhao_neve = True
+            medalhao_neve = 1
         else:
             print("Voce volta misteriosamente para o inicio!")
+            print("")
             cenario_atual = "inicio"
 
 #Feature sorte/azar
@@ -473,7 +498,7 @@ while not game_over and game_win != 500:
             del cenarios["biblioteca"]["opcoes"]
             cenarios["biblioteca"]["opcoes"] = {"predio 1": "voltar para o saguao de entrada do predio 1"}
             comeu = True
-            Medalhao_fogo = True
+            medalhao_fogo = 1
 
         else:
             print("Inspetora: É proibido comer na biblioteca!")
@@ -529,22 +554,30 @@ while not game_over and game_win != 500:
     elif len(aqua_medalhao) == 0:
         print("")
         print("Você entra no predio e percebe uma inundacao!")
+        time.sleep(2)
         print("Um monstro sobe no seu peito formando um simbolo de agua")
+        time.sleep(2)
         print("Você adiquiriu o medalhão de agua!")
+        time.sleep(2)
         cenario_atual = "inicio"
         del cenarios["inicio"]["opcoes"]
         cenarios["inicio"]["opcoes"] = {"predio 1": "entrar no predio 1"}
         del cenarios["inicio"]["descricao"]
         cenarios["inicio"]["descricao"] = "Ja que o predio 2 ta inundado só resta o predio 1!"
-        Medalhao_agua = True
+        medalhao_agua = 1
 
 #Jogo normal qdo nao acontece nada de diferente
 
     else:
         print("")
+        print("Agua:{0}".format(medalhao_agua))
+        print("Neve:{0}".format(medalhao_neve))
+        print("Fogo:{0}".format(medalhao_fogo))
         print("{0}.".format(cenario_atual["titulo"]))
         print("-" * len(cenario_atual["titulo"]))
+        time.sleep(1)
         print(cenario_atual["descricao"])
+        time.sleep(1)
         print("")
         print("Suas opcoes são:")
         for chave in cenario_atual["opcoes"]:
@@ -553,19 +586,19 @@ while not game_over and game_win != 500:
         opcoes = cenario_atual["opcoes"] 
         if len(opcoes) == 0:
             print("Acabaram-se suas opções {0}!".format(player))
-            time.sleep(5)
+            time.sleep(1)
             game_over = True
         else:
             escolha = input("-")
 
-        while escolha not in opcoes and contador < 4:
-            if contador < 5:
-                print("Escolha invalida!")
-                escolha = input("-")
-                contador+=1
-            else:
-                print("Que pena {0}! Acabaram as suas chances!".format(player))
-                game_over = True
+            while escolha not in opcoes and contador < 4:
+                if contador < 5:
+                    print("Escolha invalida!")
+                    escolha = input("-")
+                    contador+=1
+                else:
+                    print("Que pena {0}! Acabaram as suas chances!".format(player))
+                    game_over = True
         if contador >= 4:
             print("Que pena {0}! Você perdeu!".format(player))
             time.sleep(1)
