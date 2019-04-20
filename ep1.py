@@ -20,6 +20,19 @@ depois entrar no portal(pulando da cobertura do insper).
 import time
 import random
 
+
+###CONTROLADORES DO JOGO PARA USO DO PROFESSOR (DESATIVE TEMPO DAS ANIMACOES E DAS ACOES DO JOGO AQUI!)
+
+t02 = 0.2 #Tempo de 0.2 segundos no time sleep  |ANIMACOES|
+t05 = 0.5 #Tempo de 0.5 segundos no time sleep  |ANIMACOES|
+t1 = 0.1 #Tempo de 0.1 segundos no time sleep  |ANIMACOES|
+t10 = 1 #Tempo de 1 segundo no time sleep  |ANIMACOES|
+
+tx1 = 1 #Tempo de 1 segundo no time sleep |INICIO DO JOGO|
+
+ty1 = 1 #Tempo de 1 segundo no time sleep |QUANDO VC VIAJA DE CENARIO EM CENARIO|
+
+
 ###Variaveis iniciais:
 
 game_win = 0 #500 para vencer o jogo
@@ -28,11 +41,11 @@ game_over = False #fim de jogo
 comeu = False #feature sorte e itens magicos
 aspas = '"' #escrever aspas no .format
 medalhao_fogo = 0
-medalhao_agua = 0
+medalhao_agua = 0  #os medalhoes estavam dando bug com True e False por isso ficou 0 e 1
 medalhao_neve = 0
 medalhao_3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
 medalhao3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
-contador = 0 ###Contador de erros
+contador = 0 ###Contador de erros de digitacao
 vida_player = 100
 vida_boneco = 20
 vida_EL_RAUL = 100
@@ -40,21 +53,21 @@ medalha_EL_RAUL = False #medalha ganha ao derrotar EL RAUL
 
 ###Animação de entrada:
 
-
+time.sleep(t02)
 print("Initializing...")
-time.sleep(0.2)
+time.sleep(t05)
 print("            ______           ______   ______    ___ ___    ______")
-time.sleep(0.2)
+time.sleep(t02)
 print("|       |  |        |       |        |      |  |   |   |  |      ")
-time.sleep(0.2)
+time.sleep(t02)
 print("|       |  |        |       |        |      |  |   |   |  |      ")
-time.sleep(0.2)
+time.sleep(t02)
 print("|   |   |  |----    |       |        |      |  |   |   |  |----  ")
-time.sleep(0.2)
+time.sleep(t02)
 print("|   |   |  |        |       |        |      |  |       |  |      ")
-time.sleep(0.2)
+time.sleep(t02)
 print("|___|___|  |______  |_____  |______  |______|  |       |  |______")
-time.sleep(0.2)
+time.sleep(t02)
 
 
 
@@ -63,61 +76,61 @@ time.sleep(0.2)
 
 def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
     if game_over == True:###funcionar só usando return.
-        time.sleep(1)
+        time.sleep(t10)
         print()
         print('                  uuuuuuu')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('             uu$$$$$$$$$$$uu')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('           uu$$$$$$$$$$$$$$$$$uu')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('          u$$$$$$$$$$$$$$$$$$$$$u      ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('         u$$$$$$$$$$$$$$$$$$$$$$$u      ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('        u$$$$$$$$$$$$$$$$$$$$$$$$$u     ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('        u$$$$$$$$$$$$$$$$$$$$$$$$$u     ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('        u$$$$$$"   "$$$"   "$$$$$$u     ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('        "$$$$"      u$u       $$$$"      ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('         $$$u       u$u       u$$$      ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('         $$$u      u$$$u      u$$$      ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('          "$$$$uu$$$   $$$uu$$$$"      ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('           "$$$$$$$"   "$$$$$$$"     ')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('             u$$$$$$$u$$$$$$$u')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('              u$"$"$"$"$"$"$u')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('   uuu        $$u$ $ $ $ $u$$       uuu')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('  u$$$$        $$$$$u$u$u$$$       u$$$$')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('   $$$$$uu      "$$$$$$$$$"     uu$$$$$$')
-        time.sleep(0.1)
+        time.sleep(t1)
         print(' u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$')
-        time.sleep(0.1)
+        time.sleep(t1)
         print(' $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('  """      ""$$$$$$$$$$$uu ""$"""')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('            uuuu ""$$$$$$$$$$uuu')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('   u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('   $$$$$$$$$$""""           ""$$$$$$$$$$$"')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('    "$$$$$"                      ""$$$$""')
-        time.sleep(0.1)
+        time.sleep(t1)
         print('      $$$"                         $$$$"')
         print()
-        time.sleep(1)
+        time.sleep(t10)
         
         return "                  Game over!"
 
@@ -126,19 +139,19 @@ def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao
 
 def win(game):        ###Raul perdao por botar print dentro de funcao mas nao sei como fazer para a animacao
     if game == True:  ###funcionar só usando return.
-        time.sleep(0.2)
+        time.sleep(t02)
         print("                                                        ") 
-        time.sleep(0.2)
+        time.sleep(t02)
         print("     \   /   ____            |       |   |   |\    |   |")
-        time.sleep(0.2)
+        time.sleep(t02)
         print("      \ /   |    |  |   |    |       |   |   | \   |   |")
-        time.sleep(0.2)    
+        time.sleep(t02)    
         print("       |    |    |  |   |    |   |   |   |   |  \  |   |")
-        time.sleep(0.2)
+        time.sleep(t02)
         print("       |    |    |  |   |    |   |   |   |   |   \ |   |")
-        time.sleep(0.2)
+        time.sleep(t02)
         print("       |    |____|  |___|    |___|___|   |   |    \|   o")  
-        time.sleep(0.2)
+        time.sleep(t02)
         print("")
         return "Parabens!"
 
@@ -153,19 +166,19 @@ player = input("Nome:")
 
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
 print("Bem vindo {0} ao Choices Game!".format(player))
-time.sleep(1)
+time.sleep(tx1)
 print("")
 print("Descrição do jogo:")
-time.sleep(1)
+time.sleep(tx1)
 print("Você é um aluno do Insper que teve uma crise de insonia e dormiu alguns dias seguidos perdendo aulas e chegando no dia da entrega do EP.")
 print("")
-time.sleep(1)
+time.sleep(tx1)
 print("Você então vai tentar pedir para o professor adiar a entrega, mas para isso primeiro vai ter que achar ele. ")
 print("")
-time.sleep(1)
+time.sleep(tx1)
 print("Então boa sorte na sua jornada {0}!".format(player))
 print("")
-time.sleep(1)
+time.sleep(tx1)
 
 ###Sistema de inventarios dos medalhoes:
 
@@ -239,7 +252,7 @@ def carregar_cenarios():
         "comer": {#O que acontecera a seguir depende do randint por isso nao importa descricao e opcoes.
             "titulo": "Sorte ou Azar?",
             "descricao": "whatever",
-            "key": {},###     ATIVA A SALA SECRETA
+            "key": {},###     |ATIVA A SALA SECRETA|
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "opcoes": {
@@ -316,7 +329,7 @@ def carregar_cenarios():
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
-            "descricao": {},###       DESCRICAO VAZIA PARA ATIVAR O PORTAL
+            "descricao": {},###       |DESCRICAO VAZIA PARA ATIVAR O PORTAL|
             "opcoes": {
                 "prof": "ir falar o professor",
                 "elevador": "voltar para o elevador"
@@ -325,7 +338,7 @@ def carregar_cenarios():
         "easter egg": {#O que acontecera a seguir depende do tcha por isso nao importa descricao e opcoes.
             "titulo": "Parabens vc encontrou o Easter Egg escondido!",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
-            "tcha": {},###   ATIVA O EASTER EGG
+            "tcha": {},###       |ATIVA O EASTER EGG|
             "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
                          "Voce avista alguem de costas que parece ser o seu professor...                                        "
@@ -535,7 +548,7 @@ while not game_over and game_win != 500:
 #Easter egg e fim:
 
     elif len(sala_easter) == 0:
-        print("Parabens vc achou o easter egg secreto!")
+        print("Parabens vc achou o easter egg secreto e o fim do jogo!")
         print("Esse jogo foi criado pelo Maulem e pelo ThiagoD!")
         print("Obrigado por jogar o nosso jogo {0}!".format(player))
         time.sleep(5)
@@ -570,14 +583,15 @@ while not game_over and game_win != 500:
 
     else:
         print("")
+        print("Medalhões:") ###|INVENTARIO|
         print("Agua:{0}".format(medalhao_agua))
         print("Neve:{0}".format(medalhao_neve))
         print("Fogo:{0}".format(medalhao_fogo))
         print("{0}.".format(cenario_atual["titulo"]))
         print("-" * len(cenario_atual["titulo"]))
-        time.sleep(1)
+        time.sleep(ty1)
         print(cenario_atual["descricao"])
-        time.sleep(1)
+        time.sleep(ty1)
         print("")
         print("Suas opcoes são:")
         for chave in cenario_atual["opcoes"]:
@@ -586,7 +600,7 @@ while not game_over and game_win != 500:
         opcoes = cenario_atual["opcoes"] 
         if len(opcoes) == 0:
             print("Acabaram-se suas opções {0}!".format(player))
-            time.sleep(1)
+            time.sleep(ty1)
             game_over = True
         else:
             escolha = input("-")
@@ -601,7 +615,7 @@ while not game_over and game_win != 500:
                     game_over = True
         if contador >= 4:
             print("Que pena {0}! Você perdeu!".format(player))
-            time.sleep(1)
+            time.sleep(ty1)
             game_over = True
         else:
             cenario_atual = escolha
