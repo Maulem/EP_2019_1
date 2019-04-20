@@ -11,6 +11,9 @@ NKO Enterprises Presents: Escape Insper
 Created on Tue Apr 16 16:32:14 2019
 
 @author: Maulem and ThiagoD
+
+Objetivos do jogo: Juntar medalhoes do fogo, da agua e da neve, transformando em um medalhao dos 3 elementos,
+depois entrar no portal(pulando da cobertura do insper).
 """
 ###Imports:
 
@@ -21,7 +24,7 @@ import random
 
 ###Variaveis iniciais:
 
-
+game_win = 0
 player = "*****"
 game_over = False
 comeu = False
@@ -108,7 +111,22 @@ def death(game_over):    ###Raul perdao por botar print dentro de funcao mas nao
         
         return "                  Game over!"
 
-
+###Animação de vencer o jogo:
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 ###Introdução ao game:
 
 """
@@ -312,7 +330,7 @@ cenarios, cenario_atual = carregar_cenarios()
 ###Jogo central:
 
 
-while not game_over:
+while not game_over and game_win != 500:
     
     medalhao_3_elementos = medalhoes(medalhao_fogo, medalhao_agua, medalhao_neve)#checa se vc conseguiu os 3 medalhoes
     
@@ -330,7 +348,7 @@ while not game_over:
     
 #Feature de um chefao que oferece uma dica se vc o vencer
 
-    if spawn_monster < 10 and medalha_EL_RAUL == False:
+    if spawn_monster < 20 and medalha_EL_RAUL == False:
         print("A wild mexican EL RAUL appears!")
         print("O que você pretende fazer em relação a esse mexicano que parece seu professor?")
         print('Opções: "enfrentar" ou "fugir"')
@@ -425,6 +443,7 @@ while not game_over:
         else:
             print("Voce volta misteriosamente para o inicio!")
             cenario_atual = "inicio"
+
 #Feature sorte/azar
 
     elif len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
@@ -476,7 +495,7 @@ while not game_over:
                 destino = input("-")
             cenario_atual = destino
 
-#Easter egg:
+#Easter egg e fim:
 
     elif len(sala_easter) == 0:
         print("Parabens vc achou o easter egg secreto!")
@@ -486,14 +505,12 @@ while not game_over:
         print(death(True))
         print("")
         print("Zoeira o jogo ainda não acabou!")
+        time.sleep(3)
         print("")
-        print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
-        print("Pra onde você quer ir?(se nao lembrar de nenhum digita 'inicio')")
-        destino = input("-")
-        while destino not in cenarios:
-            print("Destino invalido")
-            destino = input("-")
-        cenario_atual = destino
+        print("Agora acabou!")
+        time.sleep(3)
+        print(win(True))
+        game_win = 500 #condicao pra vencer o jogo
 
 #Quando vc entra no predio 2
 
@@ -529,7 +546,7 @@ while not game_over:
         else:
             escolha = input("-")
 
-        while escolha not in opcoes and contador < 4:
+        while escolha not in opcoes and contador < 5:
             if contador < 4:
                 print("Escolha invalida!")
                 escolha = input("-")
@@ -545,7 +562,11 @@ while not game_over:
             cenario_atual = escolha
             contador = 0
 
-print(death(True))
+#Animacao de morte            
+
+if game_over == True:
+    print(death(True))
+
 
 
 
