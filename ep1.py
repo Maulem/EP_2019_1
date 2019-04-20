@@ -32,6 +32,10 @@ medalhao_neve = False
 medalhao_3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
 medalhao3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
 contador = 0 ###Contador de erros
+vida_player = 100
+vida_boneco = 20
+vida_EL_RAUL = 100
+medalha_EL_RAUL = False
 
 ###Animação de entrada:
 
@@ -323,12 +327,104 @@ while not game_over:
     aqua_medalhao = cenario_atual["aqua"]#parte da feature do medalhao de agua
 
     spawn_monster = random.randint(0, 1001)
+    
+#Feature de um chefao que oferece uma dica se vc o vencer
 
-#Feature de monstros aleatorios
-    if spawn_monster < 899:
-        print()
-    
-    
+    if spawn_monster < 10 and medalha_EL_RAUL == False:
+        print("A wild mexican EL RAUL appears!")
+        print("O que você pretende fazer em relação a esse mexicano que parece seu professor?")
+        print('Opções: "enfrentar" ou "fugir"')
+        luta = input("-")
+        if luta == "enfrentar":
+            print("")
+            print("El RAUL tem 100 pontos de vida!")
+            print("Você tem {0} pontos de vida!".format(vida_player))
+            print("")
+            time.sleep(2)
+            while vida_player > 0 and vida_EL_RAUL >0:
+                atq_player = random.randint(5, 30)
+                print("")
+                print("Você deu {0} de ataque!".format(atq_player))
+                print("")
+                time.sleep(2)
+                vida_EL_RAUL -= atq_player
+                print("EL RAUL tem {0} pontos de vida!".format(vida_EL_RAUL))
+                time.sleep(4)
+                print("")
+                print("")
+                atq_EL_RAUL = random.randint(1, 20)
+                print("Ele te deu {0} de dano!".format(atq_EL_RAUL))
+                print("")
+                time.sleep(2)
+                vida_player -= atq_EL_RAUL
+                print("Você tem {0} pontos de vida!".format(vida_player))
+                print("")
+                time.sleep(2)
+            if vida_player > 0:
+                print("Após vencer EL RAUL ele decide adiar o ep e te conta uma coisa interessante!")
+                print("")
+                time.sleep(5)
+                print("Juntando os medalhoes do Fogo, da Agua e da Neve e pulando da cobertura do insper você vera algo interessante!")
+                print("")
+                time.sleep(5)
+                print("Apos fala isso EL RAUL some que nem fumaça!")
+                print("")
+                print("Voce volta misteriosamente para o inicio!")
+                time.sleep(5)
+                cenario_atual = "inicio"
+                medalha_EL_RAUL = True
+            else:
+                game_over = True
+
+#Feature de monstros aleatorios e combate
+    elif spawn_monster < 40 and medalhao_neve == False:
+        print("Um boneco de neve doidão apareceu!")
+        print("Você quer enfrenta-lo ou fugir?")
+        print('Opções: "enfrentar" ou "fugir"')
+        luta = input("-")
+        if luta == "enfrentar":
+            print("")
+            print("O boneco de neve tem 20 pontos de vida!")
+            print("Você tem {0} pontos de vida!".format(vida_player))
+            print("")
+            time.sleep(2)
+            while vida_player > 0 and vida_boneco >0:
+                atq_player = random.randint(5, 16)
+                print("")
+                print("Você deu {0} de ataque!".format(atq_player))
+                print("")
+                time.sleep(2)
+                vida_boneco -= atq_player
+                print("O boneco de neve tem {0} pontos de vida!".format(vida_boneco))
+                time.sleep(4)
+                print("")
+                print("")
+                atq_boneco = random.randint(1, 6)
+                print("Ele te deu {0} de dano!".format(atq_boneco))
+                print("")
+                time.sleep(2)
+                vida_player -= atq_boneco
+                print("Você tem {0} pontos de vida!".format(vida_player))
+                print("")
+                time.sleep(2)
+            print("No seu ataque final vc escorrega na agua deixada pelo boneco e cai de bunda no chao!")
+            print("")
+            time.sleep(2)
+            print("Esse pequeno tremor faz haver um disturbio na rede eletrica que torna as luzes mais intensas...")
+            print("")
+            time.sleep(2)
+            print("O boneco de neve acaba derretendo!")
+            print("")
+            time.sleep(2)
+            print("Fatality!")
+            time.sleep(3)
+            print("Voce volta misteriosamente para o inicio com um medalhao de neve como recompensa pela sua batalha!")
+            time.sleep(4)
+            cenario_atual = "inicio"
+            medalhao_neve = True
+        else:
+            print("Voce volta misteriosamente para o inicio!")
+            cenario_atual = "inicio"
 #Feature sorte/azar
 
     elif len(sala_key) == 0 and comeu == False:###Primeira feature(Sorte ou Azar?)
@@ -442,7 +538,7 @@ while not game_over:
                 print("Que pena {0}! Acabaram as suas chances!".format(player))
                 game_over = True
         if contador >= 4:
-            print("Que pena {0}! Você morreu!".format(player))
+            print("Que pena {0}! Você perdeu!".format(player))
             time.sleep(1)
             game_over = True
         else:
