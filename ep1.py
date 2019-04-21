@@ -598,6 +598,7 @@ while not game_over and game_win != 500:
         print("Agua:{0}".format(medalhao_agua))
         print("Neve:{0}".format(medalhao_neve))
         print("Fogo:{0}".format(medalhao_fogo))
+        print("")
         print("{0}.".format(cenario_atual["titulo"]))
         print("-" * len(cenario_atual["titulo"]))
         time.sleep(ty1)
