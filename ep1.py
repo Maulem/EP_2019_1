@@ -165,7 +165,7 @@ player = input("Nome:")
 '''print("\x1b[2J\x1b[1;1H") '''###Esse comando limpa a tela do console do usuario ##decidi nao usar porque nao sei se vc gostaria
 
 print("") ###Esse comando pula uma linha para ficar organizado apos usar o comando acima.
-print("Bem vindo {0} ao Choices Game!".format(player))
+print("Bem vindo {0} ao Escape Insper!".format(player))
 time.sleep(tx1)
 print("")
 print("Descrição do jogo:")
@@ -222,7 +222,7 @@ def carregar_cenarios():
                 "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
                 "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
                 "aqua": {},###       MEDALHAO DE AGUA ATIVADO
-                "opcoes": {"inicio": "voltar pra rua"}
+                "opcoes": {"inicio": "voltar pra rua"}###Opcoes nunca podem estar em branco senao eh game over!
         },            
         "biblioteca": {
             "titulo": "A casa dos livros",
@@ -256,7 +256,7 @@ def carregar_cenarios():
             "tcha": "whatever",###quando o len(tcha)=0 ativa a feature do easter egg
             "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "opcoes": {
-                "biblioteca": "voltar para a Biblioteca"
+                "biblioteca": "voltar para a Biblioteca"###Opcoes nunca podem estar em branco senao eh game over!
               }
         },
         "5 andar": {
@@ -331,21 +331,19 @@ def carregar_cenarios():
             "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
             "descricao": {},###       |DESCRICAO VAZIA PARA ATIVAR O PORTAL|
             "opcoes": {
-                "prof": "ir falar o professor",
-                "elevador": "voltar para o elevador"
+                "prof": "ir falar o professor",###Opcoes nunca podem estar em branco senao eh game over!
+                "elevador": "voltar para o elevador"###Opcoes nunca podem estar em branco senao eh game over!
               }
         },
-        "easter egg": {#O que acontecera a seguir depende do tcha por isso nao importa descricao e opcoes.
+        "Fim": {#O que acontecera a seguir depende do tcha por isso nao importa descricao e opcoes.
             "titulo": "Parabens vc encontrou o Easter Egg escondido!",
             "key": "whatever",###quando o len(key)=0 ativa a feature da sala secreta na biblioteca(hot dog)
-            "tcha": {},###       |ATIVA O EASTER EGG|
+            "tcha": {},###       |ATIVA O FIM DO JOGO|
             "aqua": "whatever",###quando o len(aqua)=0 ativa a feature do medalhao de agua
-            "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.                                        "
-                         "Voce avista alguem de costas que parece ser o seu professor...                                        "
-                         "Mas não dá pra você enxergar direito, talvez se vc chegar mais perto...                                       ",
+            "descricao": "Voce sente um cheiro maravilhoso de comida ao sair do elevador.      ###Descricao nunca podem estar em branco senao ativa uma feature!                                  ",
             "opcoes": {
-                "prof": "ir falar o professor",
-                "elevador": "voltar para o elevador"
+                "prof": "ir falar o professor",###Opcoes nunca podem estar em branco senao eh game over!
+                "elevador": "voltar para o elevador"###Opcoes nunca podem estar em branco senao eh game over!
               }
         },
 
@@ -383,7 +381,7 @@ while not game_over and game_win != 500:
     
     descricao = cenario_atual["descricao"]#parte da feature do portal
     
-    sala_easter = cenario_atual["tcha"]#parte da feature do easter egg
+    sala_fim = cenario_atual["tcha"]#parte da feature do easter egg
     
     aqua_medalhao = cenario_atual["aqua"]#parte da feature do medalhao de agua
 
@@ -520,10 +518,23 @@ while not game_over and game_win != 500:
             time.sleep(1)
             game_over = True
 
-#Sala que só curiosos vao encontrar
+#Sala que só curiosos vao encontrar(Easter Egg!)
 
     elif len(sala_key) == 0 and comeu == True: 
         print("Olha só temos um espertinho por aqui!")#a unica maneira de se chegar aqui é com o portal!
+        time.sleep(2)
+        print("Parabens vc achou o Easter Egg secreto!")
+        time.sleep(2)
+        print("Esse jogo foi criado pelo Maulem e pelo ThiagoD!")
+        time.sleep(2)
+        print("Obrigado por jogar o nosso jogo {0}!".format(player))
+        time.sleep(2)
+        print("Parabenizamos voce pela sua inteligencia!")
+        time.sleep(5)
+        print(death(True))
+        print("")
+        print("Zoeira o jogo ainda não acabou!")
+        time.sleep(2)
         print("Parabens {0}, vc ganhou o medalhao dos 3 elementos completo!".format(player))
         print("Sugestão: pule novamente {0}!".format(player))
         time.sleep(3)
@@ -535,7 +546,7 @@ while not game_over and game_win != 500:
     elif len(descricao) == 0:
         
         if medalhao_3_elementos == True or medalhao3_elementos == True:
-            cenario_atual = "easter egg"
+            cenario_atual = "Fim"
         else:
             print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
             print("Pra onde você quer ir?")
@@ -545,10 +556,10 @@ while not game_over and game_win != 500:
                 destino = input("-")
             cenario_atual = destino
 
-#Easter egg e fim:
+#Fim do jogo(Vitoria):
 
-    elif len(sala_easter) == 0:
-        print("Parabens vc achou o easter egg secreto e o fim do jogo!")
+    elif len(sala_fim) == 0:
+        print("Parabens vc terminou o jogo!")
         print("Esse jogo foi criado pelo Maulem e pelo ThiagoD!")
         print("Obrigado por jogar o nosso jogo {0}!".format(player))
         time.sleep(5)
