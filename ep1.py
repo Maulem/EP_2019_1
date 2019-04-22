@@ -44,7 +44,6 @@ medalhao_fogo = 0
 medalhao_agua = 0  #os medalhoes estavam dando bug com True e False por isso ficou 0 e 1
 medalhao_neve = 0
 medalhao_3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
-medalhao3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
 contador = 0 ###Contador de erros de digitacao
 vida_player = 100
 vida_boneco = 20
@@ -407,6 +406,8 @@ while not game_over and game_win != 500:
                 print("")
                 time.sleep(2)
                 vida_EL_RAUL -= atq_player
+                if vida_EL_RAUL < 0:
+                    vida_EL_RAUL = 0
                 print("EL RAUL tem {0} pontos de vida!".format(vida_EL_RAUL))
                 time.sleep(4)
                 print("")
@@ -416,6 +417,8 @@ while not game_over and game_win != 500:
                 print("")
                 time.sleep(2)
                 vida_player -= atq_EL_RAUL
+                if vida_player < 0:
+                    vida_player = 0
                 print("Você tem {0} pontos de vida!".format(vida_player))
                 print("")
                 time.sleep(2)
@@ -459,6 +462,8 @@ while not game_over and game_win != 500:
                 print("")
                 time.sleep(2)
                 vida_boneco -= atq_player
+                if vida_boneco < 0:
+                    vida_boneco = 0
                 print("O boneco de neve tem {0} pontos de vida!".format(vida_boneco))
                 time.sleep(4)
                 print("")
@@ -468,6 +473,8 @@ while not game_over and game_win != 500:
                 print("")
                 time.sleep(2)
                 vida_player -= atq_boneco
+                if vida_player < 0:
+                    vida_player = 0
                 print("Você tem {0} pontos de vida!".format(vida_player))
                 print("")
                 time.sleep(2)
@@ -521,7 +528,7 @@ while not game_over and game_win != 500:
 #Sala que só curiosos vao encontrar(Easter Egg!)
 
     elif len(sala_key) == 0 and comeu == True: 
-        print("Olha só temos um espertinho por aqui!")#a unica maneira de se chegar aqui é com o portal!
+        print("Olha só temos um espertinho por aqui!")#A unica maneira de se chegar aqui é com o portal! (Digite "comer")
         time.sleep(2)
         print("Parabens vc achou o Easter Egg secreto!")
         time.sleep(2)
@@ -539,13 +546,15 @@ while not game_over and game_win != 500:
         print("Sugestão: pule novamente {0}!".format(player))
         time.sleep(3)
         cenario_atual = "biblioteca"
-        medalhao3_elementos = True
+        medalhao_agua = 1 
+        medalhao_neve = 1 
+        medalaho_fogo = 1 ###Para nao bugar o inventario
 
 #Portal
 
     elif len(descricao) == 0:
         
-        if medalhao_3_elementos == True or medalhao3_elementos == True:
+        if medalhao_3_elementos == True:
             cenario_atual = "Fim"
         else:
             print("Você percebe que pode ir pra qualquer lugar desde que saiba o nome dele!")
