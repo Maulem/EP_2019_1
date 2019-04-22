@@ -43,7 +43,7 @@ aspas = '"' #escrever aspas no .format
 medalhao_fogo = 0
 medalhao_agua = 0  #os medalhoes estavam dando bug com True e False por isso ficou 0 e 1
 medalhao_neve = 0
-medalhao_3_elementos = False    ###sao 2 variaveis mas representam o mesmo item!
+medalhao_3_elementos = False    ###medalhao da vitoria!
 contador = 0 ###Contador de erros de digitacao
 vida_player = 100
 vida_boneco = 20
@@ -550,7 +550,7 @@ while not game_over and game_win != 500:
         medalhao_neve = 1 
         medalaho_fogo = 1 ###Para nao bugar o inventario
 
-#Portal
+#Portal:
 
     elif len(descricao) == 0:
         
